@@ -46,6 +46,6 @@ def register_dataset(
         "source": source,
         "classification": classification,
         "version": version,
-        "status": "REGISTERED",
+        "status": "PENDING",
         "registered_at": datetime.utcnow().isoformat()
     }

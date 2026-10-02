@@ -9,6 +9,7 @@ from pydantic import BaseModel
 from src.intake import register_dataset
 from src.registry_store import load_registry, add_dataset
 from src.audit_log import load_audit_log, log_event
+from src.approval import update_dataset_status
 
 # Create FastAPI application
 app = FastAPI(
@@ -30,6 +31,11 @@ REGISTRY_PATH = PROJECT_ROOT / "data" / "registry.json"
 # Define expected request format
 class ValidationRequest(BaseModel):
     dataset_id: str
+
+class DatasetApprovalRequest(BaseModel):
+    dataset_id: str
+    status: str
+    reviewer: str = "demo_reviewer"
 
 
 # Welcome endpoint
@@ -148,3 +154,23 @@ def get_audit_logs():
         "total_events": len(logs),
         "events": logs
     }
+@app.post("/datasets/approve")
+def approve_dataset(request: DatasetApprovalRequest):
+
+    try:
+        result = update_dataset_status(
+            dataset_id=request.dataset_id,
+            new_status=request.status,
+            reviewer=request.reviewer
+        )
+
+        return {
+            "message": "Dataset review completed.",
+            "dataset": result
+        }
+
+    except ValueError as error:
+        return {
+            "message": "Dataset review failed.",
+            "error": str(error)
+        }

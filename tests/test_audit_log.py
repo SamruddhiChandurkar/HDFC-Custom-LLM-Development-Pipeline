@@ -1,5 +1,5 @@
 import json
-from audit_log import AuditLogger
+from src.audit_log import AuditLogger
 
 
 def test_audit_logger_creates_log(tmp_path):
