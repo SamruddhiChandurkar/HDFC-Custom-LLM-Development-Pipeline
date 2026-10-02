@@ -308,3 +308,36 @@ st.caption(
     "Prototype only. This dashboard does not represent "
     "an authorized HDFC Bank production system."
 )
+
+st.divider()
+
+st.header("Dataset Audit History")
+
+if st.button("Refresh Audit Logs"):
+    try:
+        response = requests.get(
+            "http://127.0.0.1:8000/audit/logs",
+            timeout=10
+        )
+
+        if response.status_code == 200:
+            audit_data = response.json()
+
+            st.metric(
+                "Total Audit Events",
+                audit_data["total_events"]
+            )
+
+            if audit_data["events"]:
+                st.dataframe(
+                    audit_data["events"],
+                    use_container_width=True
+                )
+            else:
+                st.info("No audit events available.")
+
+        else:
+            st.error("Unable to fetch audit logs.")
+
+    except requests.RequestException as error:
+        st.error(f"Backend connection error: {error}")

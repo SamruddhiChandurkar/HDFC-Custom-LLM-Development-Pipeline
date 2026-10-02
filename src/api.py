@@ -8,6 +8,7 @@ from src.data_validator import validate_dataset
 from pydantic import BaseModel
 from src.intake import register_dataset
 from src.registry_store import load_registry, add_dataset
+from src.audit_log import load_audit_log, log_event
 
 # Create FastAPI application
 app = FastAPI(
@@ -118,9 +119,18 @@ def dataset_intake(request: DatasetIntakeRequest):
             version=request.version
         )
 
+        registry = add_dataset(result)
+
+        log_event(
+            dataset_id=request.dataset_id,
+            action="DATASET_REGISTERED",
+            details="Dataset successfully added to persistent registry"
+        )
+
         return {
             "message": "Dataset registered successfully.",
-            "dataset": result
+            "dataset": result,
+            "total_registered_datasets": len(registry["datasets"])
         }
 
     except ValueError as error:
@@ -128,3 +138,13 @@ def dataset_intake(request: DatasetIntakeRequest):
             "message": "Dataset registration failed.",
             "error": str(error)
         }
+    
+
+@app.get("/audit/logs")
+def get_audit_logs():
+    logs = load_audit_log()
+
+    return {
+        "total_events": len(logs),
+        "events": logs
+    }
