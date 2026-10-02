@@ -21,6 +21,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 # Demo dataset location
 DATASET_PATH = PROJECT_ROOT / "data" / "banking_records.json"
 
+REGISTRY_PATH = PROJECT_ROOT / "data" / "registry.json"
+
 
 # Define expected request format
 class ValidationRequest(BaseModel):
@@ -90,3 +92,20 @@ def validate_demo_dataset(request: ValidationRequest):
         "record_count": result["record_count"],
         "errors": result["errors"]
     }
+
+@app.get("/datasets/registry")
+def get_dataset_registry():
+
+    if not REGISTRY_PATH.exists():
+        raise HTTPException(
+            status_code=404,
+            detail="Dataset registry not found"
+        )
+
+    import json
+
+    with open(REGISTRY_PATH, "r", encoding="utf-8") as file:
+        registry = json.load(file)
+
+    return registry
+

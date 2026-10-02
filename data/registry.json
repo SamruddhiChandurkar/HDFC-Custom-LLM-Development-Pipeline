@@ -1,0 +1,16 @@
+
+{
+  "registry_name": "HDFC Demo Dataset Registry",
+  "registry_version": "1.0",
+  "datasets": [
+    {
+      "dataset_id": "HDFC-DEMO-001",
+      "dataset_version": "1.0",
+      "owner": "Demo Data Governance Team",
+      "purpose": "internal_knowledge_classification",
+      "approval_status": "approved_for_demo",
+      "validation_status": "PASSED",
+      "record_count": 3
+    }
+  ]
+}
