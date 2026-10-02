@@ -128,7 +128,97 @@ else:
 
 st.divider()
 
+st.divider()
+st.header("Dataset Intake")
 
+st.write(
+    "Register a new synthetic dataset before it enters the validation workflow."
+)
+
+with st.form("dataset_intake_form"):
+
+    dataset_id = st.text_input(
+        "Dataset ID",
+        value="HDFC-DEMO-002"
+    )
+
+    dataset_name = st.text_input(
+        "Dataset Name",
+        value="Banking FAQ Dataset"
+    )
+
+    purpose = st.text_input(
+        "Purpose",
+        value="Internal Knowledge Classification"
+    )
+
+    source = st.text_input(
+        "Source",
+        value="Synthetic Training Data"
+    )
+
+    classification = st.selectbox(
+        "Classification",
+        [
+            "PUBLIC",
+            "INTERNAL",
+            "CONFIDENTIAL",
+            "RESTRICTED"
+        ]
+    )
+
+    version = st.text_input(
+        "Version",
+        value="1.0"
+    )
+
+    submitted = st.form_submit_button(
+        "Register Dataset"
+    )
+
+if submitted:
+
+    payload = {
+        "dataset_id": dataset_id,
+        "dataset_name": dataset_name,
+        "purpose": purpose,
+        "source": source,
+        "classification": classification,
+        "version": version
+    }
+
+    with st.spinner("Registering dataset..."):
+
+        result, intake_error = call_api(
+            "/datasets/intake",
+            method="POST",
+            payload=payload
+        )
+
+    if intake_error:
+
+        st.error(
+            f"Dataset registration failed: {intake_error}"
+        )
+
+    else:
+
+        if result["message"] == "Dataset registered successfully.":
+
+            st.success(
+                "Dataset registered successfully."
+            )
+
+            st.json(result)
+
+        else:
+
+            st.error(
+                "Dataset registration failed."
+            )
+
+            st.json(result)
+            
 # Dataset validation section
 st.header("Dataset Validation")
 

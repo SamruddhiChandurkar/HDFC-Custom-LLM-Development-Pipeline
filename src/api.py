@@ -5,7 +5,8 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 from src.data_validator import validate_dataset
-
+from pydantic import BaseModel
+from src.intake import register_dataset
 
 # Create FastAPI application
 app = FastAPI(
