@@ -7,6 +7,7 @@ from pydantic import BaseModel
 from src.data_validator import validate_dataset
 from pydantic import BaseModel
 from src.intake import register_dataset
+from src.registry_store import load_registry, add_dataset
 
 # Create FastAPI application
 app = FastAPI(
@@ -74,39 +75,56 @@ def get_demo_dataset():
 
 
 # Validate demo dataset
-@app.post("/datasets/validate")
-def validate_demo_dataset(request: ValidationRequest):
-
-    if request.dataset_id != "HDFC-DEMO-001":
-        raise HTTPException(
-            status_code=404,
-            detail="Dataset ID not found in demo registry"
+@app.post("/datasets/intake")
+def dataset_intake(request: DatasetIntakeRequest):
+    try:
+        result = register_dataset(
+            dataset_id=request.dataset_id,
+            dataset_name=request.dataset_name,
+            purpose=request.purpose,
+            source=request.source,
+            classification=request.classification,
+            version=request.version
         )
 
-    result = validate_dataset(DATASET_PATH)
+        registry = add_dataset(result)
 
-    return {
-        "dataset_id": request.dataset_id,
-        "validation_status": (
-            "PASSED" if result["valid"] else "FAILED"
-        ),
-        "record_count": result["record_count"],
-        "errors": result["errors"]
-    }
+        return {
+            "message": "Dataset registered successfully.",
+            "dataset": result,
+            "total_registered_datasets": len(registry["datasets"])
+        }
+
+    except ValueError as error:
+        return {
+            "message": "Dataset registration failed.",
+            "error": str(error)
+        }
 
 @app.get("/datasets/registry")
 def get_dataset_registry():
+    return load_registry()
 
-    if not REGISTRY_PATH.exists():
-        raise HTTPException(
-            status_code=404,
-            detail="Dataset registry not found"
+
+@app.post("/datasets/intake")
+def dataset_intake(request: DatasetIntakeRequest):
+    try:
+        result = register_dataset(
+            dataset_id=request.dataset_id,
+            dataset_name=request.dataset_name,
+            purpose=request.purpose,
+            source=request.source,
+            classification=request.classification,
+            version=request.version
         )
 
-    import json
+        return {
+            "message": "Dataset registered successfully.",
+            "dataset": result
+        }
 
-    with open(REGISTRY_PATH, "r", encoding="utf-8") as file:
-        registry = json.load(file)
-
-    return registry
-
+    except ValueError as error:
+        return {
+            "message": "Dataset registration failed.",
+            "error": str(error)
+        }
