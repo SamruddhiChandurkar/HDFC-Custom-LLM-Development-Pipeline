@@ -1,0 +1,28 @@
+
+{
+  "dataset_id": "HDFC-DEMO-001",
+  "dataset_version": "1.0",
+  "source": "Synthetic Training Data",
+  "owner": "Demo Data Governance Team",
+  "purpose": "internal_knowledge_classification",
+  "classification": "internal_demo",
+  "permission_status": "approved_for_demo",
+  "deidentified": true,
+  "records": [
+    {
+      "record_id": "REC-001",
+      "text": "A savings account is used to deposit and withdraw money.",
+      "label": "account_information"
+    },
+    {
+      "record_id": "REC-002",
+      "text": "A fixed deposit keeps money invested for a selected period.",
+      "label": "deposit_information"
+    },
+    {
+      "record_id": "REC-003",
+      "text": "A debit card allows a customer to make eligible purchases.",
+      "label": "card_information"
+    }
+  ]
+}
