@@ -2,6 +2,7 @@
 import streamlit as st
 import requests
 import pandas as pd
+from fastapi import HTTPException
 
 
 # Backend API address

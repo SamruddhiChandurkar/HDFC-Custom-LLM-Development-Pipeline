@@ -1,0 +1,44 @@
+[
+  {
+    "id": "FAQ001",
+    "topic": "Personal Loan",
+    "question": "What is a personal loan?",
+    "answer": "A personal loan is an unsecured loan that may be used for eligible personal expenses. Approval depends on lender policy and applicant assessment.",
+    "source": "Demo Personal Loan FAQ"
+  },
+  {
+    "id": "FAQ002",
+    "topic": "Eligibility",
+    "question": "How is loan eligibility decided?",
+    "answer": "Eligibility may depend on income, repayment capacity, credit history, employment details, and applicable lending criteria.",
+    "source": "Demo Eligibility Guide"
+  },
+  {
+    "id": "FAQ003",
+    "topic": "Documents",
+    "question": "Which documents may be required?",
+    "answer": "Depending on the application, identity proof, address proof, income documents, and employment details may be requested.",
+    "source": "Demo Documentation Guide"
+  },
+  {
+    "id": "FAQ004",
+    "topic": "Interest Rate",
+    "question": "What is the interest rate?",
+    "answer": "Interest rates depend on the applicable product terms and individual assessment. Refer to the current authorized product information for actual rates.",
+    "source": "Demo Product Information"
+  },
+  {
+    "id": "FAQ005",
+    "topic": "Repayment",
+    "question": "What is EMI?",
+    "answer": "EMI stands for Equated Monthly Instalment. It is the periodic payment made toward loan repayment, generally including principal and interest.",
+    "source": "Demo Repayment Guide"
+  },
+  {
+    "id": "FAQ006",
+    "topic": "Credit Score",
+    "question": "Does credit score affect loan approval?",
+    "answer": "Credit history may be one of the factors considered during loan assessment. It does not independently guarantee approval or rejection.",
+    "source": "Demo Credit Guide"
+  }
+]
