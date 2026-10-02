@@ -1,0 +1,40 @@
+{
+    "model_version": "v1",
+    "evaluation_type": "agent_routing",
+    "total": 5,
+    "passed": 3,
+    "failed": 2,
+    "accuracy": 0.6,
+    "results": [
+        {
+            "id": "EVAL001",
+            "expected": "BANKING_RAG",
+            "actual": "RAG",
+            "passed": false
+        },
+        {
+            "id": "EVAL002",
+            "expected": "SAFETY",
+            "actual": "SAFETY",
+            "passed": true
+        },
+        {
+            "id": "EVAL003",
+            "expected": "SECURITY",
+            "actual": "SECURITY",
+            "passed": true
+        },
+        {
+            "id": "EVAL004",
+            "expected": "CALCULATOR",
+            "actual": "CALCULATOR",
+            "passed": true
+        },
+        {
+            "id": "EVAL005",
+            "expected": "BANKING_RAG",
+            "actual": "RAG",
+            "passed": false
+        }
+    ]
+}

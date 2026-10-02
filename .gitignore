@@ -1,21 +1,61 @@
-# Python cache
+# Python
 __pycache__/
 *.py[cod]
+*.pyo
 
 # Virtual environment
 .venv/
+venv/
+env/
 
-# Environment variables
+# Environment variables / secrets
 .env
+.env.*
+!.env.example
 
-# Test cache
-.pytest_cache/
+# IDE
+.vscode/
+.idea/
 
-# Streamlit cache
+# Streamlit
 .streamlit/secrets.toml
 
-.venv/
-__pycache__/
-*.pyc
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local databases / temporary files
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated model artifacts
+artifacts/
+*.bin
+*.pt
+*.pth
+*.safetensors
+
+# Training outputs
+runs/
+wandb/
+
+# Temporary files
+tmp/
+temp/
+
+# Uploaded/private files
+data/uploaded_policies/
+data/*.tmp
+
+# Python cache
 .pytest_cache/
-.streamlit/
+.mypy_cache/
+.ruff_cache/
+
+# Coverage
+.coverage
+htmlcov/

@@ -1,0 +1,12 @@
+{
+    "run_id": "lora-demo-001",
+    "method": "LoRA",
+    "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "adapter": "artifacts/lora_adapter",
+    "dataset": "data/lora_training.jsonl",
+    "epochs": 3,
+    "learning_rate": 0.0002,
+    "status": "COMPLETED",
+    "metrics": {},
+    "notes": "Banking domain adapter trained using LoRA."
+}

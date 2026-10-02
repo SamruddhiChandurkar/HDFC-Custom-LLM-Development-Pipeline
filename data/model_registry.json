@@ -1,0 +1,12 @@
+{
+    "models": [
+        {
+            "model_id": "hdfc-banking-lora",
+            "version": "v1-lora",
+            "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+            "adapter": "artifacts/lora_adapter",
+            "status": "EVALUATION",
+            "registered_at": "2026-10-02T21:32:42.192367"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "active_version": "v1",
+    "versions": [
+        {
+            "version": "v1",
+            "status": "ACTIVE",
+            "traffic_percentage": 100
+        }
+    ]
+}

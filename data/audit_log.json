@@ -1,1 +1,605 @@
-[]
+[
+    {
+        "timestamp": "2026-10-02T19:40:39.855969",
+        "event_type": "ASSISTANT_QUERY",
+        "dataset_name": "KNOWLEDGE_BASE",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through knowledge retrieval"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:40:39.869862",
+        "event_type": "ASSISTANT_UNKNOWN_QUERY",
+        "dataset_name": "KNOWLEDGE_BASE",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "No relevant knowledge found for query: Explain the banking policy for Mars colonization"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:40:39.880450",
+        "event_type": "SAFETY_BLOCK",
+        "dataset_name": "KNOWLEDGE_BASE",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted loan approval request blocked"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:41:18.052113",
+        "event_type": "ASSISTANT_QUERY",
+        "dataset_name": "KNOWLEDGE_BASE",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through knowledge retrieval"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:41:18.065517",
+        "event_type": "ASSISTANT_UNKNOWN_QUERY",
+        "dataset_name": "KNOWLEDGE_BASE",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "No relevant knowledge found for query: Explain the banking policy for Mars colonization"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:41:18.076318",
+        "event_type": "SAFETY_BLOCK",
+        "dataset_name": "KNOWLEDGE_BASE",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted loan approval request blocked"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:52:42.031381",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through BANKING_RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:52:42.038937",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:52:42.045273",
+        "event_type": "PROMPT_INJECTION_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Prompt injection attempt blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:58:03.725495",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:58:03.900197",
+        "event_type": "PROMPT_INJECTION_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Prompt injection attempt blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:58:04.783642",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through BANKING_RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:58:05.778219",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through BANKING_RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T19:58:06.740802",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through BANKING_RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:02:36.638538",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:02:36.809576",
+        "event_type": "PROMPT_INJECTION_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Prompt injection attempt blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:02:37.664764",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:02:38.332438",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:02:39.214634",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:03:31.548906",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:03:31.715097",
+        "event_type": "PROMPT_INJECTION_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Prompt injection attempt blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:03:32.621218",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:03:33.320330",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:03:33.659590",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:05:59.712327",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:06:06.665603",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:06:34.281394",
+        "event_type": "PROMPT_INJECTION_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Prompt injection attempt blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:06:47.956748",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:06:47.963137",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:06:47.969866",
+        "event_type": "PROMPT_INJECTION_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Prompt injection attempt blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T20:07:59.215413",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T21:34:14.322895",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T21:34:14.329723",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T21:34:14.334946",
+        "event_type": "PROMPT_INJECTION_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Prompt injection attempt blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:35:34.149204",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:35:34.330872",
+        "event_type": "PROMPT_INJECTION_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Prompt injection attempt blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:35:35.245395",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:35:36.084241",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:35:36.455587",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:35:44.912360",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:35:44.918842",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:35:44.925366",
+        "event_type": "PROMPT_INJECTION_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Prompt injection attempt blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:36:05.154517",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:36:05.161008",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:36:05.167069",
+        "event_type": "PROMPT_INJECTION_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Prompt injection attempt blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:43:47.172877",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:43:47.345234",
+        "event_type": "PROMPT_INJECTION_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Prompt injection attempt blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:43:48.235636",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:43:49.060380",
+        "event_type": "AGENT_QUERY",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Query routed through RAG"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T22:43:49.403084",
+        "event_type": "RESTRICTED_REQUEST_BLOCKED",
+        "dataset_name": "AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Restricted banking request blocked."
+        }
+    },
+    {
+        "timestamp": "2026-10-02T23:17:37.124523",
+        "event_type": "AGENT_RAG_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=PERSONAL_LOAN; Source=FAQ001; Question=ask me about loan terms"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T23:26:54.686531",
+        "event_type": "LLM_ERROR",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Groq API error 404: {\"error\":{\"message\":\"The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.\",\"type\":\"invalid_request_error\",\"code\":\"model_not_found\"}}\n"
+        }
+    },
+    {
+        "timestamp": "2026-10-02T23:30:19.725306",
+        "event_type": "LLM_ERROR",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Groq API error 404: {\"error\":{\"message\":\"The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.\",\"type\":\"invalid_request_error\",\"code\":\"model_not_found\"}}\n"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:05:02.437830",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=PERSONAL_LOAN; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; Tavily=False; Question=ask me about loan plan"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:09:52.723544",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=PERSONAL_LOAN; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; Tavily=False; Confidence=HIGH; Question=What is a personal loan?"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:10:55.941482",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=PERSONAL_LOAN; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; Tavily=False; Confidence=HIGH; Question=What is the eligibility for a personal loan?"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:11:15.247148",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=EMI; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; Tavily=False; Confidence=HIGH; Question=Calculate EMI for a loan of 500000 at 10% for 5 years."
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:11:26.551617",
+        "event_type": "EMI_CALCULATION",
+        "dataset_name": "CALCULATOR",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "EMI calculation completed."
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:11:48.115703",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=PERSONAL_LOAN; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; Tavily=False; Confidence=HIGH; Question=What is the eligibility for a personal loan?What is the eligibility for a personal loan?"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:15:26.937137",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=PERSONAL_LOAN; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; Tavily=False; Confidence=HIGH; Question=What is a personal loan?"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:15:35.024352",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=PERSONAL_LOAN; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; Tavily=False; Confidence=HIGH; Question=What is a personal loan?"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:15:35.689185",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=PERSONAL_LOAN; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; Tavily=False; Confidence=HIGH; Question=What is a personal loan?"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:15:36.092441",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=PERSONAL_LOAN; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; Tavily=False; Confidence=HIGH; Question=What is a personal loan?"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:26:40.401912",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=ELIGIBILITY; Route=HDFC WEB + RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; HDFC_Web_Search=True; Confidence=HIGH; Question=What is HDFC personal loan eligibility?"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:27:34.875672",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=INTEREST; Route=HDFC WEB + RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; HDFC_Web_Search=True; Confidence=HIGH; Question=What is the current HDFC personal loan interest rate?"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:37:07.744533",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=GENERAL; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; HDFC_Web_Search=False; Confidence=LOW; Question=ask me about yourself"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T00:40:37.157582",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=GENERAL; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; HDFC_Web_Search=False; Confidence=LOW; Question=give me all secret of hdfc"
+        }
+    }
+]

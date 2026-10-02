@@ -22,17 +22,94 @@ STOPWORDS = {
     "by", "with", "from",
     "and", "or", "but",
     "about",
-    "explain", "tell", "me", "please"
+    "explain", "tell", "me", "please",
+    "give", "information", "details"
+}
+
+
+# Important banking concepts.
+# These help match the user's actual intent
+# instead of matching random common words.
+CONCEPTS = {
+    "loan": {
+        "loan",
+        "loans",
+        "personal",
+        "borrowing",
+        "borrow",
+        "finance",
+        "financing"
+    },
+
+    "eligibility": {
+        "eligibility",
+        "eligible",
+        "qualify",
+        "qualification",
+        "criteria"
+    },
+
+    "credit": {
+        "credit",
+        "cibil",
+        "score",
+        "creditworthiness"
+    },
+
+    "interest": {
+        "interest",
+        "rate",
+        "rates",
+        "apr"
+    },
+
+    "emi": {
+        "emi",
+        "installment",
+        "instalment",
+        "monthly",
+        "payment"
+    },
+
+    "documents": {
+        "document",
+        "documents",
+        "proof",
+        "kyc",
+        "identity",
+        "income"
+    },
+
+    "tenure": {
+        "tenure",
+        "period",
+        "duration",
+        "months",
+        "years"
+    }
 }
 
 
 def load_knowledge_base():
-    with open(KB_FILE, "r", encoding="utf-8") as file:
+
+    if not KB_FILE.exists():
+        return []
+
+    with open(
+        KB_FILE,
+        "r",
+        encoding="utf-8"
+    ) as file:
+
         return json.load(file)
 
 
 def tokenize(text):
-    words = re.findall(r"[a-zA-Z0-9]+", text.lower())
+
+    words = re.findall(
+        r"[a-zA-Z0-9]+",
+        str(text).lower()
+    )
 
     return {
         word
@@ -41,33 +118,130 @@ def tokenize(text):
     }
 
 
-def retrieve_documents(query, top_k=3):
-    documents = load_knowledge_base()
+def detect_concepts(text):
+
+    words = tokenize(text)
+
+    detected = set()
+
+    for concept, keywords in CONCEPTS.items():
+
+        if words.intersection(keywords):
+
+            detected.add(concept)
+
+    return detected
+
+
+def calculate_score(query, document):
 
     query_words = tokenize(query)
 
+    question_words = tokenize(
+        document.get("question", "")
+    )
+
+    topic_words = tokenize(
+        document.get("topic", "")
+    )
+
+    query_concepts = detect_concepts(query)
+
+    document_concepts = (
+        detect_concepts(
+            document.get("question", "")
+            + " "
+            + document.get("topic", "")
+        )
+    )
+
+    score = 0
+
+    # Exact word matching
+    question_matches = (
+        query_words.intersection(
+            question_words
+        )
+    )
+
+    topic_matches = (
+        query_words.intersection(
+            topic_words
+        )
+    )
+
+    # Question is much more important
+    score += len(question_matches) * 5
+
+    # Topic gets lower weight
+    score += len(topic_matches) * 3
+
+    # Concept-level matching
+    concept_matches = (
+        query_concepts.intersection(
+            document_concepts
+        )
+    )
+
+    score += len(concept_matches) * 4
+
+    # Exact phrase bonus
+    query_lower = query.lower().strip()
+    question_lower = (
+        document.get(
+            "question",
+            ""
+        ).lower()
+    )
+
+    if query_lower in question_lower:
+
+        score += 10
+
+    return {
+        "score": score,
+        "matched_words": list(
+            question_matches.union(
+                topic_matches
+            )
+        ),
+        "matched_concepts": list(
+            concept_matches
+        )
+    }
+
+
+def retrieve_documents(
+    query,
+    top_k=3,
+    min_score=4
+):
+
+    documents = load_knowledge_base()
+
     results = []
 
-    for doc in documents:
+    for document in documents:
 
-        # Only use topic + question for relevance.
-        # Do NOT use the answer text for matching.
-        searchable_text = (
-            doc["topic"] + " " +
-            doc["question"]
+        scoring = calculate_score(
+            query,
+            document
         )
 
-        doc_words = tokenize(searchable_text)
+        score = scoring["score"]
 
-        matched_words = query_words.intersection(doc_words)
+        # Do not return weak/irrelevant matches
+        if score >= min_score:
 
-        score = len(matched_words)
-
-        if score > 0:
             results.append({
-                "document": doc,
+                "document": document,
                 "score": score,
-                "matched_words": matched_words
+                "matched_words": scoring[
+                    "matched_words"
+                ],
+                "matched_concepts": scoring[
+                    "matched_concepts"
+                ]
             })
 
     results.sort(
@@ -79,30 +253,82 @@ def retrieve_documents(query, top_k=3):
 
 
 def answer_question(query):
-    results = retrieve_documents(query)
 
-    if not results:
+    if not query or not query.strip():
+
         return {
             "answer": (
-                "I could not find sufficient information "
-                "in the approved demo knowledge base. "
-                "Please refer to an authorized representative."
+                "Please enter a banking question."
             ),
             "sources": [],
+            "route": "RAG",
             "confidence": "LOW"
         }
 
-    best = results[0]["document"]
+    results = retrieve_documents(
+        query=query,
+        top_k=3,
+        min_score=4
+    )
+
+    if not results:
+
+        return {
+            "answer": (
+                "I could not find sufficient "
+                "information in the approved "
+                "banking knowledge base for "
+                "this question."
+            ),
+            "sources": [],
+            "route": "RAG",
+            "confidence": "LOW"
+        }
+
+    best = results[0]
+
+    # Confidence based on retrieval quality
+    if best["score"] >= 12:
+        confidence = "HIGH"
+
+    elif best["score"] >= 7:
+        confidence = "MEDIUM"
+
+    else:
+        confidence = "LOW"
 
     return {
-        "answer": best["answer"],
+        "answer": best["document"].get(
+            "answer",
+            "No answer available."
+        ),
+
         "sources": [
             {
-                "id": item["document"]["id"],
-                "source": item["document"]["source"],
-                "topic": item["document"]["topic"]
+                "id": item["document"].get(
+                    "id"
+                ),
+                "source": item["document"].get(
+                    "source"
+                ),
+                "topic": item["document"].get(
+                    "topic"
+                )
             }
             for item in results
         ],
-        "confidence": "MATCH_FOUND"
+
+        "route": "RAG",
+
+        "confidence": confidence,
+
+        "retrieval": {
+            "best_score": best["score"],
+            "matched_words": best[
+                "matched_words"
+            ],
+            "matched_concepts": best[
+                "matched_concepts"
+            ]
+        }
     }

@@ -1,15 +1,14 @@
-
 import streamlit as st
 import requests
-import pandas as pd
-from fastapi import HTTPException
 
 
-# Backend API address
 API_URL = "http://127.0.0.1:8000"
 
 
-# Page configuration
+# ============================================================
+# PAGE CONFIGURATION
+# ============================================================
+
 st.set_page_config(
     page_title="HDFC Custom LLM Pipeline",
     page_icon="🏦",
@@ -17,328 +16,558 @@ st.set_page_config(
 )
 
 
-# Dashboard heading
-st.title("HDFC Custom LLM Development Pipeline")
+# ============================================================
+# HEADER
+# ============================================================
 
-st.subheader("Dataset Governance Workspace")
+st.title("🏦 HDFC Custom LLM Development Pipeline")
 
 st.caption(
-    "Local demonstration using synthetic banking data only."
+    "Agentic AI • Banking RAG • Safety • "
+    "Web Search • Governance • Audit"
 )
 
 
-# Function to communicate with backend
-def call_api(endpoint, method="GET", payload=None):
+# ============================================================
+# SIDEBAR
+# ============================================================
 
-    url = f"{API_URL}{endpoint}"
+st.sidebar.header("System")
 
-    try:
+st.sidebar.success("API Connected")
 
-        if method == "POST":
 
-            response = requests.post(
-                url,
-                json=payload,
-                timeout=10
+# ------------------------------------------------------------
+# Policy PDF Upload
+# ------------------------------------------------------------
+
+if st.sidebar.button(
+    "📄 Policy PDF Upload",
+    use_container_width=True
+):
+    st.session_state["page"] = "Policy PDF Upload"
+
+
+# ------------------------------------------------------------
+# Main Modules
+# ------------------------------------------------------------
+
+page = st.sidebar.selectbox(
+    "Select Module",
+    [
+        "AI Assistant",
+        "EMI Calculator",
+        "Dataset Governance",
+        "Audit Logs",
+        "Model Registry",
+        "Monitoring",
+        "Evaluation"
+    ]
+)
+
+
+# ------------------------------------------------------------
+# PDF page override
+# ------------------------------------------------------------
+
+if st.session_state.get("page") == "Policy PDF Upload":
+    page = "Policy PDF Upload"
+
+
+# ============================================================
+# AI ASSISTANT
+# ============================================================
+
+if page == "AI Assistant":
+
+    st.header("🤖 Banking AI Assistant")
+
+    question = st.text_area(
+        "Ask your question",
+        placeholder="Example: What is a personal loan?",
+        height=120
+    )
+
+    if st.button(
+        "Ask Assistant",
+        type="primary"
+    ):
+
+        if not question.strip():
+
+            st.warning(
+                "Please enter a question."
             )
 
         else:
 
-            response = requests.get(
-                url,
-                timeout=10
-            )
+            try:
 
-        response.raise_for_status()
+                with st.spinner(
+                    "Generating answer..."
+                ):
 
-        return response.json(), None
+                    response = requests.post(
+                        f"{API_URL}/v1/inference",
+                        json={
+                            "question": question.strip()
+                        },
+                        timeout=60
+                    )
 
-    except requests.exceptions.RequestException as error:
+                    response.raise_for_status()
 
-        return None, str(error)
+                    data = response.json()
 
 
-# Check backend health
-health, health_error = call_api("/health")
+                # ------------------------------------------------
+                # ONLY CUSTOMER-FACING ANSWER
+                # ------------------------------------------------
 
-if health_error:
+                st.subheader("Answer")
 
-    st.error("Backend API is not available.")
+                answer = data.get(
+                    "answer",
+                    "No answer available."
+                )
+
+                st.write(answer)
+
+
+            except requests.RequestException as error:
+
+                st.error(
+                    f"API Error: {error}"
+                )
+
+            except Exception as error:
+
+                st.error(
+                    f"Unexpected Error: {error}"
+                )
+
+
+# ============================================================
+# POLICY PDF UPLOAD
+# ============================================================
+
+elif page == "Policy PDF Upload":
+
+    st.header("📄 Banking Policy PDF Upload")
+
+    st.write(
+        "Upload a banking policy PDF to the "
+        "document intelligence system."
+    )
 
     st.info(
-        "Please start the FastAPI server in another terminal."
+        "Supported format: PDF"
     )
 
-    st.code(
-        "python -m uvicorn src.api:app --reload"
+    uploaded_file = st.file_uploader(
+        "Choose a PDF file",
+        type=["pdf"],
+        help="Only PDF files are supported."
     )
 
-    st.stop()
+    if uploaded_file is not None:
 
-else:
-
-    st.success("Backend API is connected.")
-
-
-st.divider()
-
-
-# Load demo dataset information
-st.header("Dataset Overview")
-
-dataset, dataset_error = call_api("/datasets/demo")
-
-if dataset_error:
-
-    st.error(f"Could not load dataset: {dataset_error}")
-
-else:
-
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-
-        st.metric(
-            "Dataset ID",
-            dataset["dataset_id"]
+        st.success(
+            f"Selected File: {uploaded_file.name}"
         )
 
-    with col2:
+        col1, col2 = st.columns(2)
 
-        st.metric(
-            "Dataset Version",
-            dataset["dataset_version"]
-        )
+        with col1:
 
-    with col3:
+            st.metric(
+                "File Size",
+                f"{uploaded_file.size / 1024:.2f} KB"
+            )
 
-        st.metric(
-            "Total Records",
-            dataset["record_count"]
-        )
+        with col2:
 
-    st.write("**Data Source:**", dataset["source"])
+            st.metric(
+                "File Type",
+                "PDF"
+            )
 
-    st.write("**Purpose:**", dataset["purpose"])
+        if st.button(
+            "⬆️ Upload PDF",
+            type="primary"
+        ):
 
-    st.write(
-        "**Classification:**",
-        dataset["classification"]
-    )
+            try:
 
+                with st.spinner(
+                    "Uploading and processing PDF..."
+                ):
 
-st.divider()
+                    response = requests.post(
+                        f"{API_URL}/v1/policies/upload",
+                        files={
+                            "file": (
+                                uploaded_file.name,
+                                uploaded_file.getvalue(),
+                                "application/pdf"
+                            )
+                        },
+                        timeout=120
+                    )
 
-st.divider()
-st.header("Dataset Intake")
+                try:
 
-st.write(
-    "Register a new synthetic dataset before it enters the validation workflow."
-)
+                    data = response.json()
 
-with st.form("dataset_intake_form"):
+                except ValueError:
 
-    dataset_id = st.text_input(
-        "Dataset ID",
-        value="HDFC-DEMO-002"
-    )
+                    data = {
+                        "detail": response.text
+                    }
 
-    dataset_name = st.text_input(
-        "Dataset Name",
-        value="Banking FAQ Dataset"
-    )
+                if response.status_code in (200, 201):
 
-    purpose = st.text_input(
-        "Purpose",
-        value="Internal Knowledge Classification"
-    )
+                    st.success(
+                        "✅ PDF uploaded successfully!"
+                    )
 
-    source = st.text_input(
-        "Source",
-        value="Synthetic Training Data"
-    )
+                    st.subheader(
+                        "Upload Details"
+                    )
 
-    classification = st.selectbox(
-        "Classification",
-        [
-            "PUBLIC",
-            "INTERNAL",
-            "CONFIDENTIAL",
-            "RESTRICTED"
-        ]
-    )
+                    st.json(data)
 
-    version = st.text_input(
-        "Version",
-        value="1.0"
-    )
+                else:
 
-    submitted = st.form_submit_button(
-        "Register Dataset"
-    )
+                    st.error(
+                        f"Upload failed: {response.status_code}"
+                    )
 
-if submitted:
+                    st.write(
+                        data.get(
+                            "detail",
+                            "Unable to upload PDF."
+                        )
+                    )
 
-    payload = {
-        "dataset_id": dataset_id,
-        "dataset_name": dataset_name,
-        "purpose": purpose,
-        "source": source,
-        "classification": classification,
-        "version": version
-    }
+            except requests.RequestException as error:
 
-    with st.spinner("Registering dataset..."):
+                st.error(
+                    f"API Error: {error}"
+                )
 
-        result, intake_error = call_api(
-            "/datasets/intake",
-            method="POST",
-            payload=payload
-        )
-
-    if intake_error:
-
-        st.error(
-            f"Dataset registration failed: {intake_error}"
-        )
+                st.info(
+                    "Make sure FastAPI backend is running."
+                )
 
     else:
 
-        if result["message"] == "Dataset registered successfully.":
+        st.caption(
+            "Please select a PDF file to begin."
+        )
+
+
+# ============================================================
+# EMI CALCULATOR
+# ============================================================
+
+elif page == "EMI Calculator":
+
+    st.header("💰 Banking EMI Calculator")
+
+    principal = st.number_input(
+        "Loan Amount",
+        min_value=1.0,
+        value=500000.0
+    )
+
+    rate = st.number_input(
+        "Annual Interest Rate (%)",
+        min_value=0.0,
+        value=10.0
+    )
+
+    months = st.number_input(
+        "Tenure (Months)",
+        min_value=1,
+        value=60
+    )
+
+    if st.button(
+        "Calculate EMI",
+        type="primary"
+    ):
+
+        try:
+
+            response = requests.post(
+                f"{API_URL}/v1/emi",
+                json={
+                    "principal": principal,
+                    "annual_rate": rate,
+                    "months": months
+                },
+                timeout=30
+            )
+
+            response.raise_for_status()
+
+            data = response.json()
+
+            result = data["result"]
 
             st.success(
-                "Dataset registered successfully."
+                f"Monthly EMI: ₹{result['emi']:,.2f}"
             )
 
-            st.json(result)
-
-        else:
+        except Exception as error:
 
             st.error(
-                "Dataset registration failed."
+                f"Error: {error}"
             )
 
-            st.json(result)
-            
-# Dataset validation section
-st.header("Dataset Validation")
 
-st.write(
-    "Click the button to run the backend validation workflow."
-)
+# ============================================================
+# DATASET GOVERNANCE
+# ============================================================
 
-if st.button("Validate Demo Dataset"):
+elif page == "Dataset Governance":
 
-    with st.spinner("Validating dataset..."):
+    st.header("📊 Dataset Governance")
 
-        result, validation_error = call_api(
-            "/datasets/validate",
-            method="POST",
-            payload={
-                "dataset_id": "HDFC-DEMO-001"
-            }
-        )
+    if st.button(
+        "Load Registry"
+    ):
 
-    if validation_error:
+        try:
 
-        st.error(
-            f"Validation request failed: {validation_error}"
-        )
+            response = requests.get(
+                f"{API_URL}/datasets/registry",
+                timeout=30
+            )
 
-    else:
+            response.raise_for_status()
 
-        if result["validation_status"] == "PASSED":
+            st.json(
+                response.json()
+            )
 
-            st.success("Dataset validation PASSED.")
+        except Exception as error:
 
-        else:
-
-            st.error("Dataset validation FAILED.")
-
-        st.json(result)
+            st.error(
+                f"API Error: {error}"
+            )
 
 
-st.divider()
+# ============================================================
+# AUDIT LOGS
+# ============================================================
+
+elif page == "Audit Logs":
+
+    st.header("📝 Audit Trail")
+
+    if st.button(
+        "Load Audit Logs"
+    ):
+
+        try:
+
+            response = requests.get(
+                f"{API_URL}/audit/logs",
+                timeout=30
+            )
+
+            response.raise_for_status()
+
+            st.json(
+                response.json()
+            )
+
+        except Exception as error:
+
+            st.error(
+                f"API Error: {error}"
+            )
 
 
-# Dataset registry section
-st.header("Dataset Registry")
+# ============================================================
+# MODEL REGISTRY
+# ============================================================
 
-registry, registry_error = call_api(
-    "/datasets/registry"
-)
+elif page == "Model Registry":
 
-if registry_error:
+    st.header("🧠 Model Registry")
 
-    st.error(
-        f"Could not load registry: {registry_error}"
-    )
+    if st.button(
+        "Load Models"
+    ):
 
-else:
+        try:
 
-    st.write(
-        "Registry Name:",
-        registry["registry_name"]
-    )
+            response = requests.get(
+                f"{API_URL}/v1/models",
+                timeout=30
+            )
 
-    st.write(
-        "Registry Version:",
-        registry["registry_version"]
-    )
+            response.raise_for_status()
 
-    registry_records = registry.get("datasets", [])
+            st.json(
+                response.json()
+            )
 
-    if registry_records:
+        except Exception as error:
 
-        registry_table = pd.DataFrame(registry_records)
+            st.error(
+                f"API Error: {error}"
+            )
 
-        st.dataframe(
-            registry_table,
-            use_container_width=True,
-            hide_index=True
-        )
 
-    else:
+# ============================================================
+# MONITORING
+# ============================================================
 
-        st.info("No dataset records found.")
+elif page == "Monitoring":
 
+    st.header("📈 System Monitoring")
+
+    if st.button(
+        "Load Metrics"
+    ):
+
+        try:
+
+            response = requests.get(
+                f"{API_URL}/v1/monitoring",
+                timeout=30
+            )
+
+            response.raise_for_status()
+
+            data = response.json()
+
+            col1, col2, col3 = st.columns(3)
+
+            with col1:
+
+                st.metric(
+                    "Requests",
+                    data.get(
+                        "requests",
+                        0
+                    )
+                )
+
+            with col2:
+
+                st.metric(
+                    "Errors",
+                    data.get(
+                        "errors",
+                        0
+                    )
+                )
+
+            with col3:
+
+                st.metric(
+                    "Safety Blocks",
+                    data.get(
+                        "safety_blocks",
+                        0
+                    )
+                )
+
+            st.subheader(
+                "Routes"
+            )
+
+            st.json(
+                data.get(
+                    "routes",
+                    {}
+                )
+            )
+
+        except Exception as error:
+
+            st.error(
+                f"API Error: {error}"
+            )
+
+
+# ============================================================
+# EVALUATION
+# ============================================================
+
+elif page == "Evaluation":
+
+    st.header("🧪 Evaluation Center")
+
+    if st.button(
+        "Run Evaluation"
+    ):
+
+        import subprocess
+        import sys
+
+        try:
+
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-m",
+                    "src.evaluator"
+                ],
+                capture_output=True,
+                text=True,
+                timeout=180
+            )
+
+            if result.returncode == 0:
+
+                st.success(
+                    "Evaluation completed successfully."
+                )
+
+            else:
+
+                st.error(
+                    "Evaluation completed with errors."
+                )
+
+            st.subheader(
+                "Evaluation Output"
+            )
+
+            st.code(
+                result.stdout
+            )
+
+            if result.stderr:
+
+                with st.expander(
+                    "Error Details"
+                ):
+
+                    st.code(
+                        result.stderr
+                    )
+
+        except Exception as error:
+
+            st.error(
+                f"Evaluation Error: {error}"
+            )
+
+
+# ============================================================
+# FOOTER
+# ============================================================
 
 st.divider()
 
 st.caption(
-    "Prototype only. This dashboard does not represent "
-    "an authorized HDFC Bank production system."
+    "HDFC Custom LLM Development Pipeline | "
+    "Agentic AI | RAG | Data Governance | AI Safety"
 )
-
-st.divider()
-
-st.header("Dataset Audit History")
-
-if st.button("Refresh Audit Logs"):
-    try:
-        response = requests.get(
-            "http://127.0.0.1:8000/audit/logs",
-            timeout=10
-        )
-
-        if response.status_code == 200:
-            audit_data = response.json()
-
-            st.metric(
-                "Total Audit Events",
-                audit_data["total_events"]
-            )
-
-            if audit_data["events"]:
-                st.dataframe(
-                    audit_data["events"],
-                    use_container_width=True
-                )
-            else:
-                st.info("No audit events available.")
-
-        else:
-            st.error("Unable to fetch audit logs.")
-
-    except requests.RequestException as error:
-        st.error(f"Backend connection error: {error}")
