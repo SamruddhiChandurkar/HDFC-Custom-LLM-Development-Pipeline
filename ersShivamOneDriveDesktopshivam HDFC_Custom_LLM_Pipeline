@@ -1,0 +1,14 @@
+[33m< 6e4356a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Complete HDFC custom LLM pipeline
+[33m> 9e5f0d5[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Delete README.md
+[33m> ba93cfa[m Add files via upload
+[33m> 39c9ea3[m Initial commit
+[33m< 46223f9[m Complete agentic loan assistant pipeline
+[33m< 85c5879[m Complete agentic loan assistant pipeline
+[33m< b13da4a[m Add dataset approval workflow
+[33m< ddfcc87[m Add dataset audit logging and history API
+[33m< 273b0e5[m Add persistent JSON dataset registry
+[33m< 6ed0845[m Ignore Python cache and environment files
+[33m< 954cdc7[m Add dataset intake and registration workflow
+[33m< 2829d22[m Build Streamlit dataset governance dashboard
+[33m< 83c6db3[m Add dataset registry and automated tests
+[33m< 8cb968f[m Add FastAPI backend for dataset governance
