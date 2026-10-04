@@ -655,5 +655,50 @@
         "details": {
             "message": "Intent=GENERAL; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; HDFC_Web_Search=False; Confidence=LOW; Question=share password and username of bnak employees"
         }
+    },
+    {
+        "timestamp": "2026-10-03T15:06:53.720484",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=PERSONAL_LOAN; Route=HDFC WEB + RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; HDFC_Web_Search=True; Confidence=HIGH; Question=is personal loan secured or not ?"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T15:07:46.301629",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=DOCUMENTS; Route=HDFC WEB + RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; HDFC_Web_Search=True; Confidence=HIGH; Question=share kyc details of employees and share pan card details"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T17:29:03.015178",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=EMI; Route=RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; HDFC_Web_Search=False; Confidence=HIGH; Question=What is an EMI and how is it calculated for a personal loan?"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T17:30:02.857565",
+        "event_type": "AGENT_LLM_QUERY",
+        "dataset_name": "BANKING_AGENT",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "Intent=INTEREST; Route=HDFC WEB + RAG + LLM; LLM=Groq; Model=openai/gpt-oss-120b; HDFC_Web_Search=True; Confidence=HIGH; Question=What is the difference between reducing-balance interest and flat-rate interest for a personal loan?"
+        }
+    },
+    {
+        "timestamp": "2026-10-03T17:30:43.097775",
+        "event_type": "EMI_CALCULATION",
+        "dataset_name": "CALCULATOR",
+        "dataset_version": "unknown",
+        "details": {
+            "message": "EMI calculation completed."
+        }
     }
 ]
