@@ -7,9 +7,9 @@
 [![RAG](https://img.shields.io/badge/AI-RAG%20Pipeline-7C3AED?style=for-the-badge)](https://github.com/shivamtayal2013/HDFC-Custom-LLM-Development-Pipeline)
 [![Status](https://img.shields.io/badge/Project-Academic%20Prototype-blue?style=for-the-badge)](https://github.com/shivamtayal2013/HDFC-Custom-LLM-Development-Pipeline)
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20App-2E8B57?style=for-the-badge&logo=streamlit)](https://drive.google.com/file/d/1fEeDcDbUbt-F-6jUgMBm7FX-Hual4McS/view?usp=drive_link)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20App-2E8B57?style=for-the-badge&logo=streamlit)](https://drive.google.com/file/d/1fEeDcDbUbt-F-6jUgMBm7FX-Hual4McS/view?usp=drive_link)(<= Click here for Live Demo)
 
-[![Project Overview](https://img.shields.io/badge/Project%20Overview-Group%20Presentation%20Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://drive.google.com/file/d/1sgbj5XC-fPLdUu9bGWGvOn9ETPR3I0F8/view?usp=drive_link)
+[![Project Overview](https://img.shields.io/badge/Project%20Overview-Group%20Presentation%20Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://drive.google.com/file/d/1sgbj5XC-fPLdUu9bGWGvOn9ETPR3I0F8/view?usp=drive_link)(<= Click here for Project Overview)
 
 
 **An AI-powered banking assistant using RAG, LLMs,
@@ -305,15 +305,6 @@ Evaluation	Review response-evaluation outputs and supporting evidence.
 
 12.2 API responsibility areas
 The FastAPI backend is documented as providing service areas for banking assistant interaction, dataset intake and governance, dataset approval, audit logging, evaluation, model-related operations, monitoring and health/status checks. FastAPI also provides automatically generated API documentation.
-12.3 API documentation endpoints
-Local API base:
-http://127.0.0.1:8000
-
-Swagger UI:
-http://127.0.0.1:8000/docs
-
-ReDoc:
-http://127.0.0.1:8000/redoc
 
 13. Technology Stack
 Layer	Technology	Purpose
