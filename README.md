@@ -30,10 +30,10 @@ Groq
 (https://drive.google.com/drive/folders/1PVtPnAAw9Wd2z1rBf-AJs921tUpPBKBk?usp=sharing)
 
 ## 🎥 Project Overview – Group Presentation
-(https://drive.google.com/file/d/1fEeDcDbUbt-F-6jUgMBm7FX-Hual4McS/view?usp=drive_link)
+(https://drive.google.com/file/d/1sgbj5XC-fPLdUu9bGWGvOn9ETPR3I0F8/view?usp=drive_link)
 
 ## 🌐 Live Demo
-(https://drive.google.com/file/d/1sgbj5XC-fPLdUu9bGWGvOn9ETPR3I0F8/view?usp=drive_link)
+(https://drive.google.com/file/d/1fEeDcDbUbt-F-6jUgMBm7FX-Hual4McS/view?usp=drive_link)
 
 Document positioning
 This document turns the current project README into a presentation-ready technical document. It uses the implementation details from File 1, the structural/reference style of File 2, and the project brief and submission requirements from File 3. The ER diagram is explicitly presented as a proposed logical schema where the source materials do not define a physical database schema.
