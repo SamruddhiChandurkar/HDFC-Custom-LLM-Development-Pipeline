@@ -475,3 +475,35 @@ File 2 - Reference project README	Used as a structural reference for presentatio
 File 3 - Applied GenAI project brief / requirements	Used for business framing, expected workflow, extended lifecycle, documentation expectations, deliverables and submission checklist.
 
 Prepared as an original project documentation draft based on the uploaded materials.
+
+👥 Team Contributions
+
+Our team collaboratively developed the HDFC Custom LLM Development Pipeline, an AI-powered banking assistant using RAG, web retrieval, safety checks, response evaluation, and audit logging.
+
+1. Payal Bhaskar Tuplondhe
+
+* Explained the project workflow through the Quick Memory Map slide.
+* Presented the initial overview of how the application, API, agent, retrieval, and evaluation components connect.
+
+2. Samruddhi Raju Chandurkar
+
+* Presented “What Can Our Banking AI Do?”, explaining the key features and capabilities of the Banking AI Assistant.
+* Presented “System Architecture”, explaining the Streamlit frontend, FastAPI backend, banking AI agent, RAG retrieval, HDFC website retrieval, and evaluation and audit components.
+
+3. Tanuj Verma
+
+* Presented “How Do We Keep Answers Grounded?”, explaining internal RAG and retrieval from the official HDFC website.
+* Presented “Safety Before Generation”, explaining PII detection, prompt-injection protection, restricted-request handling, source grounding, and API key protection.
+
+4. Naveen Paul Reddy Gopavarapu
+
+* Presented “We Don’t Stop After Generating the Answer”, explaining response evaluation, groundedness checks, source availability, confidence, web verification, safety outcomes, and audit logging.
+
+5. Shivam Tayal
+
+* Led the live demonstration of the Banking AI Assistant.
+* Demonstrated the application’s end-to-end workflow, including banking queries, current-information retrieval, safety handling, and the EMI calculator, where implemented.
+
+Team Collaboration
+
+The team worked together to develop, integrate, test, document, and demonstrate the HDFC Custom LLM Development Pipeline. Individual responsibilities are listed according to the presentation sections and project work undertaken by each member.
