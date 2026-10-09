@@ -1,4 +1,20 @@
-HDFC CUSTOM LLM DEVELOPMENT PIPELINE
+# 🏦 HDFC Custom LLM Pipeline — Enterprise AI Factory & RAG Infrastructure
+[![Live Demo Video](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-0056b3?style=for-the-badge&logo=github)](https://drive.google.com/file/d/1fEeDcDbUbt-F-6jUgMBm7FX-Hual4McS/view?usp=drive_link)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Groq](https://img.shields.io/badge/LLM-Groq-F55036?style=for-the-badge)](https://groq.com/)
+[![RAG](https://img.shields.io/badge/AI-RAG%20Pipeline-7C3AED?style=for-the-badge)](https://github.com/shivamtayal2013/HDFC-Custom-LLM-Development-Pipeline)
+[![Status](https://img.shields.io/badge/Project-Academic%20Prototype-blue?style=for-the-badge)](https://github.com/shivamtayal2013/HDFC-Custom-LLM-Development-Pipeline)
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Open%20App-2E8B57?style=for-the-badge&logo=streamlit)](https://drive.google.com/file/d/1fEeDcDbUbt-F-6jUgMBm7FX-Hual4McS/view?usp=drive_link)
+
+[![Project Overview](https://img.shields.io/badge/Project%20Overview-Group%20Presentation%20Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://drive.google.com/file/d/1sgbj5XC-fPLdUu9bGWGvOn9ETPR3I0F8/view?usp=drive_link)
+
+
+**An AI-powered banking assistant using RAG, LLMs,
+official-source retrieval, and a governed API workflow.**
+
 Project README & Technical Documentation
 Academic Prototype | RAG + Governed Banking AI Workflow
 DOMAIN
@@ -6,6 +22,18 @@ Banking AI	FRONTEND
 Streamlit	BACKEND
 FastAPI	LLM
 Groq
+
+## 🔗 Project URLs & Resources
+(https://hdfc-custom-llm-development-pipeline-9sry.onrender.com/)
+
+## 📸 Project Dashboard Screenshots
+(https://drive.google.com/drive/folders/1PVtPnAAw9Wd2z1rBf-AJs921tUpPBKBk?usp=sharing)
+
+## 🎥 Project Overview – Group Presentation
+(https://drive.google.com/file/d/1fEeDcDbUbt-F-6jUgMBm7FX-Hual4McS/view?usp=drive_link)
+
+## 🌐 Live Demo
+(https://drive.google.com/file/d/1sgbj5XC-fPLdUu9bGWGvOn9ETPR3I0F8/view?usp=drive_link)
 
 Document positioning
 This document turns the current project README into a presentation-ready technical document. It uses the implementation details from File 1, the structural/reference style of File 2, and the project brief and submission requirements from File 3. The ER diagram is explicitly presented as a proposed logical schema where the source materials do not define a physical database schema.
